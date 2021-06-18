@@ -81,10 +81,10 @@ class UserUpdateMutation(graphene.Mutation):
             raise ValidationError(form.errors)
 
         user = User.objects.get(pk=username)
-        user.first_name = form.cleaned_data['first_name']
-        user.last_name = form.cleaned_data['last_name']
-        user.avatar = form.cleaned_data['avatar']
-        user.password = form.cleaned_data['password']
+        user.first_name = form.cleaned_data["first_name"]
+        user.last_name = form.cleaned_data["last_name"]
+        user.avatar = form.cleaned_data["avatar"]
+        user.password = form.cleaned_data["password"]
         user.save()
         return UserUpdateMutation(user=user)
 

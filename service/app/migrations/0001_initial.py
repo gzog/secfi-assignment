@@ -7,22 +7,24 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='User',
+            name="User",
             fields=[
-                ('username', models.CharField(max_length=100, primary_key=True, serialize=False)),
-                ('first_name', models.CharField(max_length=255)),
-                ('last_name', models.CharField(max_length=255)),
-                ('password', models.CharField(max_length=255)),
-                ('avatar', models.CharField(max_length=1024)),
+                (
+                    "username",
+                    models.CharField(max_length=100, primary_key=True, serialize=False),
+                ),
+                ("first_name", models.CharField(max_length=255)),
+                ("last_name", models.CharField(max_length=255)),
+                ("password", models.CharField(max_length=255)),
+                ("avatar", models.CharField(max_length=1024)),
             ],
             options={
-                'verbose_name': 'user',
-                'verbose_name_plural': 'users',
+                "verbose_name": "user",
+                "verbose_name_plural": "users",
             },
         ),
     ]
