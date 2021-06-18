@@ -7,8 +7,8 @@ class User(models.Model):
 
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
-    username = models.CharField(max_length=100, unique=True)
-    password = models.CharField(max_length=255)
+    username = models.CharField(primary_key=True, max_length=100, blank=False)
+    password = models.CharField(max_length=255, blank=False)
     avatar = models.CharField(max_length=1024)
 
     class Meta:
