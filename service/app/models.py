@@ -5,7 +5,6 @@ from django.db import models
 
 
 class UserManager(models.Manager):
-
     def get_or_none(self, **kwargs):
         try:
             return self.get(**kwargs)
@@ -22,8 +21,8 @@ class User(models.Model):
     avatar = models.CharField(max_length=1024)
 
     class Meta:
-        verbose_name = 'user'
-        verbose_name_plural = 'users'
+        verbose_name = "user"
+        verbose_name_plural = "users"
 
     objects = UserManager()
 
