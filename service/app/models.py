@@ -1,6 +1,16 @@
+from django.core.exceptions import ObjectDoesNotExist
 from django.db import models
 
 # Create your models here.
+
+
+class UserManager(models.Manager):
+
+    def get_or_none(self, **kwargs):
+        try:
+            return self.get(**kwargs)
+        except ObjectDoesNotExist:
+            return None
 
 
 class User(models.Model):
@@ -14,6 +24,8 @@ class User(models.Model):
     class Meta:
         verbose_name = 'user'
         verbose_name_plural = 'users'
+
+    objects = UserManager()
 
     def __str__(self):
         return self.username
