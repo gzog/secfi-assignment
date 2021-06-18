@@ -1,6 +1,8 @@
 import graphene
 from graphene_django.types import DjangoObjectType
+from django.core.exceptions import ValidationError
 from .models import User
+from .forms import UserForm
 
 
 class UserType(DjangoObjectType):
@@ -31,12 +33,25 @@ class UserCreateMutation(graphene.Mutation):
     user = graphene.Field(UserType)
 
     def mutate(self, info, username, first_name, last_name, password, avatar):
+        data = {
+            "username": username,
+            "first_name": first_name,
+            "last_name": last_name,
+            "password": password,
+            "avatar": avatar,
+        }
+
+        form = UserForm(data)
+
+        if not form.is_valid():
+            raise ValidationError(form.errors)
+
         user = User.objects.create(
-            username=username,
-            first_name=first_name,
-            last_name=last_name,
-            password=password,
-            avatar=avatar,
+            username=form.cleaned_data["username"],
+            first_name=form.cleaned_data["first_name"],
+            last_name=form.cleaned_data["last_name"],
+            password=form.cleaned_data["password"],
+            avatar=form.cleaned_data["avatar"],
         )
         return UserCreateMutation(user=user)
 
@@ -52,7 +67,24 @@ class UserUpdateMutation(graphene.Mutation):
     user = graphene.Field(UserType)
 
     def mutate(self, info, username, first_name, last_name, password, avatar):
+        data = {
+            "username": username,
+            "first_name": first_name,
+            "last_name": last_name,
+            "password": password,
+            "avatar": avatar,
+        }
+
+        form = UserForm(data)
+
+        if not form.is_valid():
+            raise ValidationError(form.errors)
+
         user = User.objects.get(pk=username)
+        user.first_name = form.cleaned_data['first_name']
+        user.last_name = form.cleaned_data['last_name']
+        user.avatar = form.cleaned_data['avatar']
+        user.password = form.cleaned_data['password']
         user.save()
         return UserUpdateMutation(user=user)
 
