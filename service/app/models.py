@@ -13,10 +13,9 @@ class UserManager(models.Manager):
 
 
 class User(models.Model):
-
+    username = models.CharField(primary_key=True, max_length=100, blank=False)
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
-    username = models.CharField(primary_key=True, max_length=100, blank=False)
     password = models.CharField(max_length=255, blank=False)
     avatar = models.CharField(max_length=1024)
 
