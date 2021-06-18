@@ -11,6 +11,11 @@ graphene-django = "^2.15.0"
 
 [tool.poetry.dev-dependencies]
 ipdb = "^0.13.9"
+black = "^21.6b0"
+
+[tool.black]
+line-length = 88
+target-version = ['py37']
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
