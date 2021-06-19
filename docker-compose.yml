@@ -2,6 +2,8 @@ version: '3.8'
 
 services:
    web:
+       environment:
+          - DEBUG=False
        build: .
        command: sh -c "python service/manage.py migrate && python service/manage.py runserver 0.0.0.0:8000"
        ports:
