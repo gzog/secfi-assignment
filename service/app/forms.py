@@ -1,4 +1,6 @@
+import requests
 from django import forms
+from django.conf import settings
 from django.contrib.auth.hashers import make_password
 
 
@@ -34,3 +36,13 @@ class UserForm(forms.Form):
             )
 
         return data
+
+    def clean_avatar(self):
+        url = f"https://api.imgbb.com/1/upload?key={settings.IMG_BB_API_KEY}"
+        data = self.cleaned_data["avatar"]
+        response = requests.post(url, {"image": data})
+        response.raise_for_status()
+
+        body = response.json()
+
+        return body['data']['display_url']
