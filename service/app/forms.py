@@ -40,8 +40,14 @@ class UserForm(forms.Form):
     def clean_avatar(self):
         url = f"https://api.imgbb.com/1/upload?key={settings.IMG_BB_API_KEY}"
         data = self.cleaned_data["avatar"]
+        if not data:
+            return data
+
         response = requests.post(url, {"image": data})
-        response.raise_for_status()
+        if response.status_code == 400:
+            raise forms.ValidationError("Invalid image")
+        else:
+            response.raise_for_status()
 
         body = response.json()
 
