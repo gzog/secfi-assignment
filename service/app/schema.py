@@ -59,7 +59,7 @@ class UserCreateMutation(graphene.Mutation):
 
 class UserUpdateMutation(graphene.Mutation):
     class Arguments:
-        username = graphene.ID(required=True)
+        username = graphene.String(required=True)
         first_name = graphene.String()
         last_name = graphene.String()
         password = graphene.String()
@@ -81,7 +81,7 @@ class UserUpdateMutation(graphene.Mutation):
         if not form.is_valid():
             raise ValidationError(form.errors)
 
-        user = User.objects.get(pk=username)
+        user = User.objects.get(username=username)
         user.first_name = form.cleaned_data["first_name"]
         user.last_name = form.cleaned_data["last_name"]
         user.avatar = form.cleaned_data["avatar"]
