@@ -34,15 +34,3 @@ class UserForm(forms.Form):
             )
 
         return data
-
-
-class UserCreateForm(UserForm):
-    pass
-
-
-class UserUpdateForm(UserForm):
-    password = forms.CharField(
-        min_length=8,
-        max_length=255,
-        required=False,
-    )

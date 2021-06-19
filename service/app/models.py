@@ -1,8 +1,6 @@
 from django.core.exceptions import ObjectDoesNotExist
 from django.db import models
 
-# Create your models here.
-
 
 class UserManager(models.Manager):
     def get_or_none(self, **kwargs):
