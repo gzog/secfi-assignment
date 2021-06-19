@@ -21,14 +21,11 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8000/graphql",
+					"raw": "localhost:8000",
 					"host": [
 						"localhost"
 					],
-					"port": "8000",
-					"path": [
-						"graphql"
-					]
+					"port": "8000"
 				}
 			},
 			"response": []
@@ -44,20 +41,16 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "{\n  user(username:\"abc\") {\n    firstName\n    lastName\n    password\n    username\n    avatar\n  }\n}",
+						"query": "{\n  user(username:\"user\") {\n    firstName\n    lastName\n    password\n    username\n    avatar\n  }\n}",
 						"variables": ""
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8000/graphql",
-					"protocol": "http",
+					"raw": "localhost:8000",
 					"host": [
 						"localhost"
 					],
-					"port": "8000",
-					"path": [
-						"graphql"
-					]
+					"port": "8000"
 				}
 			},
 			"response": []
@@ -70,19 +63,16 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "mutation {\n  updateUser(firstName: \"Bob\", lastName: \"Marley\", username: \"abc\"){\n    user {\n      firstName\n      lastName\n      password\n      username\n      avatar\n    }\n  }\n}",
+						"query": "mutation {\n  updateUser(firstName: \"George\", lastName: \"New Last Name\", password: \"12345678\", username: \"user\", avatar: \"R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7\"){\n    user {\n      firstName\n      lastName\n      password\n      username\n      avatar\n    }\n  }\n}",
 						"variables": ""
 					}
 				},
 				"url": {
-					"raw": "localhost:8000/graphql",
+					"raw": "localhost:8000",
 					"host": [
 						"localhost"
 					],
-					"port": "8000",
-					"path": [
-						"graphql"
-					]
+					"port": "8000"
 				}
 			},
 			"response": []
@@ -95,19 +85,16 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "mutation {\n  createUser(firstName: \"George\", lastName: \"Zografos\", password: \"12345678\", username: \"abc\", avatar: \"abc\"){\n    user {\n      firstName\n      lastName\n      password\n      username\n      avatar\n    }\n  }\n}",
+						"query": "mutation {\n  createUser(firstName: \"George\", lastName: \"Test\", password: \"12345678\", username: \"user\", avatar: \"R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7\"){\n    user {\n      firstName\n      lastName\n      password\n      username\n      avatar\n    }\n  }\n}",
 						"variables": ""
 					}
 				},
 				"url": {
-					"raw": "localhost:8000/graphql",
+					"raw": "localhost:8000",
 					"host": [
 						"localhost"
 					],
-					"port": "8000",
-					"path": [
-						"graphql"
-					]
+					"port": "8000"
 				}
 			},
 			"response": []
@@ -120,19 +107,16 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "mutation {\n  deleteUser (username:\"george\"){\n    user {\n     username\n    }\n  }\n}",
+						"query": "mutation {\n  deleteUser (username:\"user\"){\n    user {\n     username\n    }\n  }\n}",
 						"variables": ""
 					}
 				},
 				"url": {
-					"raw": "localhost:8000/graphql",
+					"raw": "localhost:8000",
 					"host": [
 						"localhost"
 					],
-					"port": "8000",
-					"path": [
-						"graphql"
-					]
+					"port": "8000"
 				}
 			},
 			"response": []
