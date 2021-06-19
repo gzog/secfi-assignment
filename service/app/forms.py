@@ -51,4 +51,4 @@ class UserForm(forms.Form):
 
         body = response.json()
 
-        return body['data']['display_url']
+        return body["data"]["display_url"]
