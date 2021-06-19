@@ -8,6 +8,7 @@ from .forms import UserForm
 class UserType(DjangoObjectType):
     class Meta:
         model = User
+        exclude = ("id",)
 
 
 class Query(graphene.ObjectType):
